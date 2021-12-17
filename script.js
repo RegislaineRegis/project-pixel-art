@@ -1,6 +1,6 @@
-let palette = document.querySelector("#color-palette");
+let palette = document.querySelector('#color-palette');
 
-let corPaleta = ['black', 'yellow', 'green', 'red'];
+const corPaleta = ['black', 'yellow', 'green', 'red'];
 
 for (let index = 0; index < corPaleta.length; index += 1){
     // criando 4 divs
