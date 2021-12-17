@@ -1,16 +1,23 @@
-let container = document.getElementById('color-palette')
-//let contadorDiv = 4;
-let colorClass = ['black square', 'blue square', 'red square', 'yellow square'];
+let palette = document.querySelector("#color-palette");
 
-function createDivElement(classes){
-let newDiv = document.createElement('div');
-newDiv.className = classes;
-return newDiv
+let corPaleta = ['black', 'yellow', 'green', 'red'];
+
+for (let index = 0; index < corPaleta.length; index += 1){
+    // criando 4 divs
+    let newDiv = document.createElement('div');
+    newDiv.className = 'color';  
+    palette.appendChild(newDiv);  
+  // stylizando as 4 paletas
+    if(corPaleta[index] !== 'white'){
+        let corDiv = document.getElementsByClassName('color')[index];
+         corDiv.style.background = corPaleta[index];
+         corDiv.style.border = 'solid 1px black';
+        }
 }
-function addElementChild(local, elemento){
-    local.appendChild(elemento)
- }
-for (let cor of colorClass){
-let element = createDivElement(cor)
-addElementChild(container, element)
+function criarDiv(){
+       
 }
+function MudarCorPaleta(){
+
+}
+

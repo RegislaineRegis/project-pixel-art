@@ -1,23 +1,9 @@
-.yellow {
-    background-color: yellow;
-    margin-left: 8px;
-}
-.black {
-    background-color: black;
-    margin-left: 8px;
-}
-.red {
-    background-color: red;
-    margin-left: 8px;
-}
-.blue {
-    background-color: blue;
-    margin-left: 8px;
-}
-.square {
+.color{
     display: inline-block;
     width: 100px;
     height: 100px;
-    border: solid;
-    border-radius: 1px;
+    margin-left: 8px;
+}
+#color-palette {
+    margin-top: 40px;
 }
