@@ -3,7 +3,6 @@
     width: 100px;
     height: 100px;
     margin-left: 8px;
-
 }
 #color-palette {
     margin-top: 40px;
@@ -13,8 +12,7 @@
 }
 .pixel {
     display: inline-block;
-    width: 100px;
-    height: 100px;
-    margin-left: 2px; 
-    
+    width: 40px;
+    height: 40px;
+    margin-left: 2px;     
 }
