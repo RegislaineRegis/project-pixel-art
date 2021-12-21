@@ -24,8 +24,8 @@ function mudarCorPaleta(arrayPaleta, indexPaleta){
          corDiv.style.border = 'solid 1px black';
         }
 }
-// criando as divs de 25pixel, sendo 5 elementos de largura e 5 elementos de comprimento
-for(indexLinha = 0; indexLinha < 5; indexLinha += 1){    
+// criando as divs, sendo 5 elementos por linha
+for(indexLinha = 0; indexLinha < 8; indexLinha += 1){    
     for(indexColuna = 0; indexColuna < 5; indexColuna += 1){
      pixel.appendChild(criarElemento('div', 'pixel'));     
     }
@@ -35,7 +35,7 @@ for(indexLinha = 0; indexLinha < 5; indexLinha += 1){
 // pegando a qtidade de divs criadas no quadro pixel e armazenando na variavel tamanho
 let tamanho = document.getElementsByClassName('pixel').length;
 console.log(tamanho);
-//for que styliza a cor de fundo do pixel de 25 cores e sua borda
+//for que styliza a cor de fundo do pixel e sua borda
 for(let index = 0; index < tamanho; index += 1){
     let corPixel = document.getElementsByClassName('pixel')[index];
         corPixel.style.background = 'white';
