@@ -4,9 +4,8 @@ let pixel = document.querySelector('#pixel-board');
 const corPaleta = ['black', 'yellow', 'green', 'red'];
 
 for (let index = 0; index < corPaleta.length; index += 1){
-    // criando 4 divs da paleta de cores
-    palette.appendChild(criarElemento('div', 'color')); 
-
+    // criando 4 divs da paleta de cores    
+       palette.appendChild(criarElemento('div', 'color'));     
   // stylizando as 4 paletas
     mudarCorPaleta(corPaleta,index);
 }
@@ -27,10 +26,12 @@ function mudarCorPaleta(arrayPaleta, indexPaleta){
 // criando as divs, sendo 5 elementos por linha
 for(indexLinha = 0; indexLinha < 5; indexLinha += 1){    
     for(indexColuna = 0; indexColuna < 5; indexColuna += 1){
-     pixel.appendChild(criarElemento('div', 'pixel'));     
+        let elemento = criarElemento('div', 'pixel');
+        pixel.appendChild(elemento);          
     }
     //criando elemento apos 5 div's, pula a linha
-    pixel.appendChild(criarElemento('br','pulalinha'));
+    let elementoPulaLinha = criarElemento('br','pulalinha');
+    pixel.appendChild(elementoPulaLinha);
 }
 // pegando a qtidade de divs criadas no quadro pixel e armazenando na variavel tamanho
 let tamanho = document.getElementsByClassName('pixel').length;
@@ -44,3 +45,9 @@ for(let index = 0; index < tamanho; index += 1){
         corPixel.style.margin = 0;
         }
 }
+
+let preto = document.querySelector('.color').className = 'color selected';
+function mouseClique() {
+
+}
+

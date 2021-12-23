@@ -1,14 +1,14 @@
 .color { 
     display: inline-block;
-    width: 100px;
-    height: 100px;
-    margin-left: 8px;
+    width: 40px;
+    height: 40px;
+    margin-left: 4px;
 }
 #color-palette {
-    margin-top: 40px;
+    margin-top: 10px;
 }
 #pixel-board {
-    margin-top: 100px;
+    margin-top: 20px;
 }
 .pixel {
     display: inline-block;
