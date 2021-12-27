@@ -36,14 +36,18 @@ for(indexLinha = 0; indexLinha < 5; indexLinha += 1){
 // pegando a qtidade de divs criadas no quadro pixel e armazenando na variavel tamanho
 let tamanho = document.getElementsByClassName('pixel').length;
 //console.log(tamanho);
-//for que styliza a cor de fundo do pixel e sua borda
-for(let index = 0; index < tamanho; index += 1){
-    let corPixel = document.getElementsByClassName('pixel')[index];
+//função que styliza a cor de fundo do pixel como branca e sua borda
+pixelWhite();
+
+function pixelWhite(){
+  for(let index = 0; index < tamanho; index += 1){
+      let corPixel = document.getElementsByClassName('pixel')[index];
         corPixel.style.background = 'white';
         corPixel.style.border = 'solid 1px black';
         if (index % 5 === 0){
         corPixel.style.margin = 0;
         }
+   }
 }
 
 let corPreto = document.querySelector('.color');
@@ -52,6 +56,8 @@ let corAmarelo = document.getElementsByClassName('color')[1];
 let corVerde = document.getElementsByClassName('color')[2];
 let corVermelho = document.getElementsByClassName('color')[3];
 
+// apenas um da classe color deve possuir a classe selected, percorri minhas 4 divs da 
+//corpaletta add o evento qdo clicada add a classe selected
 
 function classSelected(evento){
     const elemento = document.getElementsByClassName('color');
@@ -60,9 +66,22 @@ function classSelected(evento){
     evento.target.classList.add('selected');
     } 
 }
+
 corPreto.addEventListener('click', classSelected);
 corAmarelo.addEventListener('click', classSelected);
 corVerde.addEventListener('click', classSelected);
 corVermelho.addEventListener('click', classSelected);
 
-
+  let clickPressiona = document.getElementsByClassName('pixel');
+  
+   for(let index = 0 ; index < clickPressiona.length; index += 1){
+       clickPressiona[index].addEventListener('click',function pintaPixel(){
+           for(let indexPaleta = 0; indexPaleta < corPaleta.length; indexPaleta += 1){
+               //pega o nome da classe daquela div
+              let classe = document.getElementsByClassName('color')[indexPaleta].className;
+                 if(classe === 'color selected'){
+                 clickPressiona[index].style.background = document.getElementsByClassName('color')[indexPaleta].style.background;
+               }
+           }
+        })
+    }
