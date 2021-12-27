@@ -46,8 +46,23 @@ for(let index = 0; index < tamanho; index += 1){
         }
 }
 
-let preto = document.querySelector('.color').className = 'color selected';
-function mouseClique() {
+let corPreto = document.querySelector('.color');
+corPreto.classList.add('selected');
+let corAmarelo = document.getElementsByClassName('color')[1];
+let corVerde = document.getElementsByClassName('color')[2];
+let corVermelho = document.getElementsByClassName('color')[3];
 
+
+function classSelected(evento){
+    const elemento = document.getElementsByClassName('color');
+    for(let index = 0; index < elemento.length; index += 1){
+    elemento[index].classList.remove('selected');          
+    evento.target.classList.add('selected');
+    } 
 }
+corPreto.addEventListener('click', classSelected);
+corAmarelo.addEventListener('click', classSelected);
+corVerde.addEventListener('click', classSelected);
+corVermelho.addEventListener('click', classSelected);
+
 
