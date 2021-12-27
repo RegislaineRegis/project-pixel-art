@@ -72,12 +72,13 @@ corAmarelo.addEventListener('click', classSelected);
 corVerde.addEventListener('click', classSelected);
 corVermelho.addEventListener('click', classSelected);
 
+ // capturando o quadro de pixel
   let clickPressiona = document.getElementsByClassName('pixel');
   
    for(let index = 0 ; index < clickPressiona.length; index += 1){
        clickPressiona[index].addEventListener('click',function pintaPixel(){
            for(let indexPaleta = 0; indexPaleta < corPaleta.length; indexPaleta += 1){
-               //pega o nome da classe daquela div
+               //pega o nome da classe daquela div da paleta de cor
               let classe = document.getElementsByClassName('color')[indexPaleta].className;
                  if(classe === 'color selected'){
                  clickPressiona[index].style.background = document.getElementsByClassName('color')[indexPaleta].style.background;
@@ -85,3 +86,6 @@ corVermelho.addEventListener('click', classSelected);
            }
         })
     }
+   // capturando o botão limpar
+    let btnLimpa = document.getElementById('clear-board');
+    btnLimpa.addEventListener('click',pixelWhite);

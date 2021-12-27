@@ -6,6 +6,12 @@
 }
 #color-palette {
     margin-top: 10px;
+    height:60px;
+}
+#clear-board {
+    margin-bottom: 5px;
+    width: 60px;
+    height: 30px;
 }
 #pixel-board {
     margin-top: 20px;
