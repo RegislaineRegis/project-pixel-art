@@ -1,54 +1,82 @@
+
 let palette = document.querySelector('#color-palette');
 let pixel = document.querySelector('#pixel-board');
 let buttonVqv = document.getElementById('generate-board');
 
-
 const corPaleta = ['black', 'yellow', 'green', 'red'];
 
-for (let index = 0; index < corPaleta.length; index += 1){
-    // criando 4 divs da paleta de cores    
-       palette.appendChild(criarElemento('div', 'color'));     
-  // stylizando as 4 paletas
-    mudarCorPaleta(corPaleta,index);
-}
-
-buttonVqv.addEventListener('click', function botaoVqv(){    
-    inputElemento = document.getElementById('board-size').value;
-  if(inputElemento === "" || inputElemento <= 0 || inputElemento > 50){
-      alert("Board inválido!");
-      document.getElementById('board-size').value = '';
-  }else{      
-      // criando as divs, sendo 5 elementos por linha
-   for(let indexLinha = 0; indexLinha < inputElemento; indexLinha += 1){    
-    for(let indexColuna = 0; indexColuna < inputElemento; indexColuna += 1){
+    for (let index = 0; index < corPaleta.length; index += 1){
+        // criando 4 divs da paleta de cores    
+        palette.appendChild(criarElemento('div', 'color'));     
+    // stylizando as 4 paletas
+        mudarCorPaleta(corPaleta,index);
+    }
+/*
+window.onload = function (){
+for(let linha = 0; linha < 5; linha += 1){
+    for(let coluna = 0; coluna < 5; coluna += 1){
         let elemento = criarElemento('div', 'pixel');
         pixel.appendChild(elemento);          
     }
     //criando elemento apos 5 div's, pula a linha
     let elementoPulaLinha = criarElemento('br','pulalinha');
     pixel.appendChild(elementoPulaLinha);  
-  }
-  pixelWhite();
-  }
-corPreto.addEventListener('click', classSelected);
-corAmarelo.addEventListener('click', classSelected);
-corVerde.addEventListener('click', classSelected);
-corVermelho.addEventListener('click', classSelected);
-// capturando o quadro de pixel
-let clickPressiona = document.getElementsByClassName('pixel');
-  
-for(let index = 0 ; index < clickPressiona.length; index += 1){
-    clickPressiona[index].addEventListener('click',function pintaPixel(){
-        for(let indexPaleta = 0; indexPaleta < corPaleta.length; indexPaleta += 1){
-            //pega o nome da classe daquela div da paleta de cor
-           let classe = document.getElementsByClassName('color')[indexPaleta].className;
-              if(classe === 'color selected'){
-              clickPressiona[index].style.background = document.getElementsByClassName('color')[indexPaleta].style.background;
+}
+pixelWhite();
+}*/
+
+
+buttonVqv.addEventListener('click', botaoVqv);
+
+function botaoVqv(){ 
+    
+    inputElemento = document.getElementById('board-size').value;
+    if(inputElemento === ""){
+        alert("Board inválido!");
+        document.getElementById('board-size').value = '';
+    }else if (inputElemento <= 1){
+        inputElemento = 5;
+        document.getElementById('board-size').value = '';
+        criandoPainel(inputElemento);
+    }
+    else{ 
+        criandoPainel(inputElemento);
+    }    
+        
+    corPreto.addEventListener('click', classSelected);
+    corAmarelo.addEventListener('click', classSelected);
+    corVerde.addEventListener('click', classSelected);
+    corVermelho.addEventListener('click', classSelected);
+    // capturando o quadro de pixel
+    let clickPressiona = document.getElementsByClassName('pixel');
+    
+    for(let index = 0 ; index < clickPressiona.length; index += 1){
+        clickPressiona[index].addEventListener('click',function pintaPixel(){
+            for(let indexPaleta = 0; indexPaleta < corPaleta.length; indexPaleta += 1){
+                //pega o nome da classe daquela div da paleta de cor
+            let classe = document.getElementsByClassName('color')[indexPaleta].className;
+                if(classe === 'color selected'){
+                clickPressiona[index].style.background = document.getElementsByClassName('color')[indexPaleta].style.background;
+                }
             }
+        })
+    }
+
+}
+function criandoPainel(elementoPainel){    
+    for(let indexLinha = 0; indexLinha < elementoPainel; indexLinha += 1){    
+        for(let indexColuna = 0; indexColuna < elementoPainel; indexColuna += 1){
+            let elemento = criarElemento('div', 'pixel');
+            pixel.appendChild(elemento);          
         }
-     })
- }
-})
+        //criando elemento apos 5 div's, pula a linha
+        let elementoPulaLinha = criarElemento('br','pulalinha');
+        pixel.appendChild(elementoPulaLinha);  
+    }
+    pixelWhite();
+}
+
+
 // função para criar elementos(divs, p, li, ul, etc) com os nomes de suas classes
 function criarElemento(elemento, classe){
     let newElemento = document.createElement(elemento);
@@ -108,3 +136,4 @@ function classSelected(evento){
             pixel.removeChild(pixel.firstChild)
         }       
     });
+    
