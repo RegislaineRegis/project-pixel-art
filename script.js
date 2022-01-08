@@ -133,6 +133,7 @@ function limpar(){
    //retirado a infromação do site: https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild 
         while(pixel.firstChild){
             pixel.removeChild(pixel.firstChild)
-        }           
+        } 
+        document.getElementById('pixel-board').style.backgroundcolor = 'white'; 
 }
    
