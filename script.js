@@ -1,7 +1,6 @@
 
 window.onload = function (){
 criandoPainel(5);
-
 }
 
 let palette = document.querySelector('#color-palette');
@@ -10,7 +9,7 @@ let buttonVqv = document.getElementById('generate-board');
 
 const corPaleta = ['black', 'yellow', 'green', 'red'];
 
-    for (let index = 0; index < corPaleta.length; index += 1){
+    for (let index = 0; index < 4; index += 1){
         // criando 4 divs da paleta de cores    
         palette.appendChild(criarElemento('div', 'color'));     
     // stylizando as 4 paletas
@@ -22,7 +21,10 @@ buttonVqv.addEventListener('click', botaoVqv);
 
 function botaoVqv(){     
     inputElemento = document.getElementById('board-size').value;
-
+    // referencia: Retirado de um site de explicação, pois ao efetuar a minha logica estava removendo tbm 
+   //o elemento pai section e não estava conseguindo inserir novamente os elementos 
+   //enqto tiver um elemento filho no pai da section id="pixel-board" ele vai removendo
+   //retirado a infromação do site: https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild 
     while(pixel.firstChild){
         pixel.removeChild(pixel.firstChild)
     }    
@@ -32,17 +34,17 @@ function botaoVqv(){
     }else if (inputElemento <= 1 || inputElemento <= 5){
         inputElemento = 5;
         document.getElementById('board-size').value = '';
-        criandoPainel(inputElemento);
+        criandoPainel(inputElemento);         
     }else if (inputElemento > 50){
         inputElemento = 50;
         document.getElementById('board-size').value = '';
-        criandoPainel(inputElemento);
+        criandoPainel(inputElemento);        
     }
     else{ 
         console.log(inputElemento);
         criandoPainel(inputElemento);
     }    
- }
+}
 function criandoPainel(elementoPainel){  
 
     for(let indexLinha = 0; indexLinha < elementoPainel; indexLinha += 1){    
@@ -53,13 +55,14 @@ function criandoPainel(elementoPainel){
         //criando elemento apos 5 div's, pula a linha
         let elementoPulaLinha = criarElemento('br','pulalinha');
         pixel.appendChild(elementoPulaLinha);  
-    }
-    pixelWhite(elementoPainel);
+    }    
+    pixelWhite(elementoPainel);  
 
     corPreto.addEventListener('click', classSelected);
     corAmarelo.addEventListener('click', classSelected);
     corVerde.addEventListener('click', classSelected);
     corVermelho.addEventListener('click', classSelected);
+
 
     // capturando o quadro de pixel
     let clickPressiona = document.getElementsByClassName('pixel');
@@ -107,7 +110,6 @@ corPreto.classList.add('selected');
 let corAmarelo = document.getElementsByClassName('color')[1];
 let corVerde = document.getElementsByClassName('color')[2];
 let corVermelho = document.getElementsByClassName('color')[3];
-
 // apenas um da classe color deve possuir a classe selected, percorri minhas 4 divs da Paleta de cores
 //corpaletta add o evento qdo clicada add a classe selected
 
@@ -120,20 +122,16 @@ function classSelected(evento){
 } 
    // capturando o botão limpar
    
-    let btnLimpa = document.getElementById('clear-board');    
-    inputElemento = document.getElementById('board-size').value;
- btnLimpa.addEventListener('click', limpar);
- 
-function limpar(){       
-          
-        document.getElementById('board-size').value = '';     
-   // referencia: Retirado de um site de explicação, pois ao efetuar a minha logica estava removendo tbm 
-   //o elemento pai section e não estava conseguindo inserir novamente os elementos 
-   //enqto tiver um elemento filho no pai da section id="pixel-board" ele vai removendo
-   //retirado a infromação do site: https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild 
-        while(pixel.firstChild){
-            pixel.removeChild(pixel.firstChild)
-        } 
-        document.getElementById('pixel-board').style.backgroundcolor = 'white'; 
+let btnLimpa = document.getElementById('clear-board');    
+    
+btnLimpa.addEventListener('click', limpar);
+ // botão limpar a explicação foi achada na documentação do for/of
+ //iterando sobre coleção do dom usando for/of
+function limpar(){  
+   let elemento = document.querySelectorAll('section > div');
+   for(let elementoDiv of elemento){
+       elementoDiv.style.background = 'white';
+   }
 }
+
    
