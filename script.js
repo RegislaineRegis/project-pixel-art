@@ -1,4 +1,9 @@
 
+window.onload = function (){
+criandoPainel(5);
+
+}
+
 let palette = document.querySelector('#color-palette');
 let pixel = document.querySelector('#pixel-board');
 let buttonVqv = document.getElementById('generate-board');
@@ -11,42 +16,51 @@ const corPaleta = ['black', 'yellow', 'green', 'red'];
     // stylizando as 4 paletas
         mudarCorPaleta(corPaleta,index);
     }
-/*
-window.onload = function (){
-for(let linha = 0; linha < 5; linha += 1){
-    for(let coluna = 0; coluna < 5; coluna += 1){
-        let elemento = criarElemento('div', 'pixel');
-        pixel.appendChild(elemento);          
-    }
-    //criando elemento apos 5 div's, pula a linha
-    let elementoPulaLinha = criarElemento('br','pulalinha');
-    pixel.appendChild(elementoPulaLinha);  
-}
-pixelWhite();
-}*/
 
 
 buttonVqv.addEventListener('click', botaoVqv);
 
-function botaoVqv(){ 
-    
+function botaoVqv(){     
     inputElemento = document.getElementById('board-size').value;
+
+    while(pixel.firstChild){
+        pixel.removeChild(pixel.firstChild)
+    }    
     if(inputElemento === ""){
         alert("Board inválido!");
         document.getElementById('board-size').value = '';
-    }else if (inputElemento <= 1){
+    }else if (inputElemento <= 1 || inputElemento <= 5){
         inputElemento = 5;
+        document.getElementById('board-size').value = '';
+        criandoPainel(inputElemento);
+    }else if (inputElemento > 50){
+        inputElemento = 50;
         document.getElementById('board-size').value = '';
         criandoPainel(inputElemento);
     }
     else{ 
+        console.log(inputElemento);
         criandoPainel(inputElemento);
     }    
-        
+ }
+function criandoPainel(elementoPainel){  
+
+    for(let indexLinha = 0; indexLinha < elementoPainel; indexLinha += 1){    
+        for(let indexColuna = 0; indexColuna < elementoPainel; indexColuna += 1){
+            let elemento = criarElemento('div', 'pixel');
+            pixel.appendChild(elemento);          
+        }
+        //criando elemento apos 5 div's, pula a linha
+        let elementoPulaLinha = criarElemento('br','pulalinha');
+        pixel.appendChild(elementoPulaLinha);  
+    }
+    pixelWhite(elementoPainel);
+
     corPreto.addEventListener('click', classSelected);
     corAmarelo.addEventListener('click', classSelected);
     corVerde.addEventListener('click', classSelected);
     corVermelho.addEventListener('click', classSelected);
+
     // capturando o quadro de pixel
     let clickPressiona = document.getElementsByClassName('pixel');
     
@@ -61,21 +75,7 @@ function botaoVqv(){
             }
         })
     }
-
 }
-function criandoPainel(elementoPainel){    
-    for(let indexLinha = 0; indexLinha < elementoPainel; indexLinha += 1){    
-        for(let indexColuna = 0; indexColuna < elementoPainel; indexColuna += 1){
-            let elemento = criarElemento('div', 'pixel');
-            pixel.appendChild(elemento);          
-        }
-        //criando elemento apos 5 div's, pula a linha
-        let elementoPulaLinha = criarElemento('br','pulalinha');
-        pixel.appendChild(elementoPulaLinha);  
-    }
-    pixelWhite();
-}
-
 
 // função para criar elementos(divs, p, li, ul, etc) com os nomes de suas classes
 function criarElemento(elemento, classe){
@@ -85,17 +85,15 @@ function criarElemento(elemento, classe){
 }
 //função que styliza a cor de fundo do pixel como branca e sua borda
 
-function pixelWhite(){
-    let tamanho = (document.getElementById('board-size').value)*(document.getElementById('board-size').value);
+function pixelWhite(ElementoTamanho){
+    
+    let tamanho = ElementoTamanho*ElementoTamanho;
     for(let index = 0; index < tamanho; index += 1){
         let corPixel = document.getElementsByClassName('pixel')[index];
           corPixel.style.background = 'white';
           corPixel.style.border = 'solid 1px black';
-          if (index % 5 === 0){
-          corPixel.style.margin = 0;
-          }
      }
-    }
+}
 //função que styliza a cor de fundo da paleta de 4 cores e sua borda
 function mudarCorPaleta(arrayPaleta, indexPaleta){
     if(arrayPaleta[indexPaleta] !== 'white'){
@@ -123,10 +121,11 @@ function classSelected(evento){
    // capturando o botão limpar
    
     let btnLimpa = document.getElementById('clear-board');    
-
-    btnLimpa.addEventListener('click', function(){
-
-        inputElemento = document.getElementsByClassName('pixel').length;    
+    inputElemento = document.getElementById('board-size').value;
+ btnLimpa.addEventListener('click', limpar);
+ 
+function limpar(){       
+          
         document.getElementById('board-size').value = '';     
    // referencia: Retirado de um site de explicação, pois ao efetuar a minha logica estava removendo tbm 
    //o elemento pai section e não estava conseguindo inserir novamente os elementos 
@@ -134,6 +133,6 @@ function classSelected(evento){
    //retirado a infromação do site: https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild 
         while(pixel.firstChild){
             pixel.removeChild(pixel.firstChild)
-        }       
-    });
-    
+        }           
+}
+   
