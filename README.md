@@ -1,6 +1,6 @@
 Este projeto contém os requisitos realizados por _[Regislaine Fidelis Regis](https://www.linkedin.com/in/regislaine-regis/)_ enquanto estudava na [Trybe](https://www.betrybe.com/) :rocket:
 
-#Projeto Pixel Art
+# Project Pixels Art
 
 Implementei uma página web que contém uma paleta de cores funcional que poderá ser utilizada para criar desenhos em pixels. Para isto utilizamos javascript, css e html.
 
@@ -8,7 +8,7 @@ Veja abaixo um exemplo do projeto:
 
  (colocar o gif aqui!!!)
 
-##Instalação do projeto localmente:
+## Instalação do projeto localmente:
 
 Após cada um dos passos, haverá um exemplo do comando a ser digitado para fazer o que está sendo pedido, caso tenha dificuldades e o exemplo não seja suficiente, não hesite em me contatar em _nanafidelis@gmail.com_ 
 
