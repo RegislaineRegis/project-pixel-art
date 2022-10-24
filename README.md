@@ -6,7 +6,7 @@ Implementei uma página web que contém uma paleta de cores funcional que poder�
 
 Veja abaixo um exemplo do projeto:
 
- (colocar o gif aqui!!!)
+![pixel-art-1](https://user-images.githubusercontent.com/94489726/197426939-47c2c8e2-4a01-46f1-97f3-204fb8b62e68.gif)
 
 ## Instalação do projeto localmente:
 
